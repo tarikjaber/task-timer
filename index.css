@@ -16,6 +16,7 @@ body {
   resize: none;
   height: 100px;
   padding: 10px;
+  border-radius: 5px;
   margin-bottom: 20px;
   font-size: 18px;
 }
@@ -25,7 +26,7 @@ body {
   margin: 0 auto;
   padding: 10px;
   font-size: 18px;
-  background-color: #4caf50;
+  background-color: #57C5B6;
   color: white;
   border: none;
   border-radius: 5px;
@@ -33,5 +34,5 @@ body {
 
 #start-button:hover {
   cursor: pointer;
-  background-color: #3e8e41;
+  background-color: #57C5B6;
 }
