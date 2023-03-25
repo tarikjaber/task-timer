@@ -59,15 +59,16 @@ function startNextTask() {
         document.title = `${task.name} - ${minutesLeft}:${secondsLeft.toString().padStart(2, "0")}`;
         if (timeLeft === 0) {
             clearInterval(timerId);
-            const notification = new Notification(`${task.name} completed, ${tasks[currentTaskIndex + 1]?.name} started for ${task.time} minutes`);
             currentTaskIndex++;
             audio.play();
             if (currentTaskIndex < tasks.length) {
+                const notification = new Notification(`${task.name} completed, ${tasks[currentTaskIndex + 1]?.name} started for ${task.time} minutes`);
                 notification;
                 startNextTask();
             } else {
                 new Notification("All tasks completed!")
                 startButton.textContent = "Play";
+                startButton.style.backgroundColor = "#57C5B6";
                 tasks = [];
                 taskInput.value = "";
                 title.textContent = "Task Timer";
