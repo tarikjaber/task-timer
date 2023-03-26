@@ -13,7 +13,7 @@ let remainingTime = 0; // new variable to store remaining time for the current t
 function startTimer() {
     clearInterval(timerId);
     if (tasks.length === 0) {
-        const tasksArray = taskInput.value.trim().split('\n').filter(task => task.trim() !== "");
+        const tasksArray = taskInput.value.trim().split('\n').map(task => task.trim()).filter(task => task !== "");
         for (let task of tasksArray) {
             let lastSpaceIndex = task.lastIndexOf(" ");
             if (lastSpaceIndex === -1) {
@@ -66,11 +66,8 @@ function startNextTask() {
     } else { // otherwise start new task
         var timeLeft = task.time * 60;
     }
-    timerId = setInterval(() => {
-        if (startButton.textContent === 'Play') { // use '===' instead of '!==' here
-            return;
-        }
-        timeLeft--;
+    const startInterval = () => {
+        console.log("start")
         remainingTime = timeLeft; // store remaining time for the current task
         const minutesLeft = Math.floor(timeLeft / 60);
         const secondsLeft = timeLeft % 60;
@@ -93,7 +90,10 @@ function startNextTask() {
                 document.title = "Task Timer";
             }
         }
-    }, 1000);
+        timeLeft--;
+    }
+    startInterval();
+    timerId = setInterval(startInterval, 1000);
 }
 
 function handleKeyPress(event) {
