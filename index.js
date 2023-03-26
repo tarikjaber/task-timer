@@ -27,6 +27,10 @@ function startTimer() {
                 tasks = [];
                 alert(`Invalid input line "${task}". ${taskTime} is not a number. Please enter tasks in the format "Task Name 10" where 10 is the time in minutes.`);
                 return;
+            } else if (taskTime <= 0) {
+                tasks = [];
+                alert(`Invalid input line "${task}". ${taskTime} is not a positive number. Please enter tasks in the format "Task Name 10" where 10 is the time in minutes.`);
+                return;
             }
             tasks.push({
                 name: taskName,
@@ -56,7 +60,6 @@ function startNextTask() {
         return;
     }
     const task = tasks[currentTaskIndex];
-    console.log(task)
     if (remainingTime) { // if there is remaining time for the current task, use it
         var timeLeft = remainingTime;
         remainingTime = 0;
@@ -78,8 +81,7 @@ function startNextTask() {
             currentTaskIndex++;
             audio.play();
             if (currentTaskIndex < tasks.length) {
-                const notification = new Notification(`${task.name} completed, ${tasks[currentTaskIndex + 1]?.name} started for ${task.time} minutes`);
-                notification;
+                new Notification(`${task.name} completed, ${tasks[currentTaskIndex]?.name} started for ${task.time} minute ${task.time > 1 ? "s" : ""}`);
                 startNextTask();
             } else {
                 new Notification("All tasks completed!")
@@ -91,7 +93,7 @@ function startNextTask() {
                 document.title = "Task Timer";
             }
         }
-    }, 1000);
+    }, 100);
 }
 
 function handleKeyPress(event) {
