@@ -1,5 +1,6 @@
 const taskInput = document.getElementById("task-input");
 const startButton = document.getElementById("start-button");
+const skipButton = document.getElementById("skip-button");
 const title = document.getElementById("title");
 
 let currentTaskIndex = 0;
@@ -11,13 +12,26 @@ let remainingTime = 0; // new variable to store remaining time for the current t
 function startTimer() {
     clearInterval(timerId);
     if (tasks.length === 0) {
-        const tasksArray = taskInput.value.trim().split('\n');
-        for (let i = 0; i < tasksArray.length; i += 2) {
-            const taskName = tasksArray[i];
-            const taskTime = tasksArray[i + 1];
-            tasks.push({ name: taskName, time: taskTime });
+        const tasksArray = taskInput.value.trim().split('\n').filter(task => task.trim() !== "");
+        for (let task of tasksArray) {
+            let lastSpaceIndex = task.lastIndexOf(" ");
+            if (lastSpaceIndex === -1) {
+                tasks = [];
+                alert(`Invalid input line "${task}". Please enter tasks in the format "Task Name 10" where 10 is the time in minutes.`);
+                return;
+            }
+            let taskName = task.slice(0, lastSpaceIndex);
+            let taskTime = task.slice(lastSpaceIndex + 1);
+            if (isNaN(taskTime)) {
+                tasks = [];
+                alert(`Invalid input line "${task}". ${taskTime} is not a number. Please enter tasks in the format "Task Name 10" where 10 is the time in minutes.`);
+                return;
+            }
+            tasks.push({
+                name: taskName,
+                time: taskTime
+            })
         }
-        console.log(tasks)
     }
     if (tasks.length === 0) {
         return;
@@ -41,6 +55,7 @@ function startNextTask() {
         return;
     }
     const task = tasks[currentTaskIndex];
+    console.log(task)
     if (remainingTime) { // if there is remaining time for the current task, use it
         var timeLeft = remainingTime;
         remainingTime = 0;
@@ -85,6 +100,7 @@ function handleKeyPress(event) {
     } else {
         remainingTime = 0; // reset remaining time for the current task
         clearInterval(timerId);
+        currentTaskIndex = 0;
         startButton.textContent = "Play";
         startButton.style.backgroundColor = "#57C5B6";
         tasks = [];
@@ -93,3 +109,22 @@ function handleKeyPress(event) {
 
 taskInput.addEventListener("keydown", handleKeyPress);
 startButton.addEventListener("click", startTimer);
+skipButton.addEventListener("click", () => {
+    if (currentTaskIndex < tasks.length - 1) {
+        clearInterval(timerId);
+        currentTaskIndex++;
+        remainingTime = 0; // reset remaining time for the current task
+        startNextTask();
+    } else {
+        clearInterval(timerId);
+        currentTaskIndex = 0;
+        tasks = [];
+        new Notification("All tasks completed!")
+        taskInput.value = "";
+        remainingTime = 0;
+        startButton.textContent = "Play";
+        startButton.style.backgroundColor = "#57C5B6";
+        title.textContent = "Task Timer";
+        document.title = "Task Timer";
+    }
+});

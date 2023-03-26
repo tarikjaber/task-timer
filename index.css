@@ -13,8 +13,8 @@ body {
   display: block;
   max-width: 600px;
   width: calc(100% - 20px);
-  resize: none;
-  height: 100px;
+  resize: vertical;
+  height: 250px;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -32,7 +32,34 @@ body {
   border-radius: 5px;
 }
 
+#skip-button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #19A7CE;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
 #start-button:hover {
   cursor: pointer;
   background-color: #57C5B6;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 600px;
+  width: calc(100% - 20px);
+}
+
+button {
+  width: 100px;
+}
+
+button:active {
+  transform: scale(0.95);
 }
