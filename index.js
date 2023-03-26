@@ -98,7 +98,7 @@ function handleKeyPress(event) {
     if (event.shiftKey && event.key === "Enter") {
         event.preventDefault();
         startTimer();
-    } else {
+    } else if (!event.shiftKey) {
         remainingTime = 0; // reset remaining time for the current task
         clearInterval(timerId);
         currentTaskIndex = 0;
