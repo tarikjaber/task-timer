@@ -93,7 +93,7 @@ function startNextTask() {
                 document.title = "Task Timer";
             }
         }
-    }, 100);
+    }, 1000);
 }
 
 function handleKeyPress(event) {
