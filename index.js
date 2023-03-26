@@ -3,6 +3,7 @@ const startButton = document.getElementById("start-button");
 const skipButton = document.getElementById("skip-button");
 const title = document.getElementById("title");
 
+taskInput.focus();
 let currentTaskIndex = 0;
 let tasks = [];
 let timerId;
