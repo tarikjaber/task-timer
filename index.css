@@ -23,7 +23,6 @@ body {
 
 #start-button {
   display: block;
-  margin: 0 auto;
   padding: 10px;
   font-size: 18px;
   background-color: #57C5B6;
@@ -34,7 +33,6 @@ body {
 
 #skip-button {
   display: block;
-  margin: 0 auto;
   padding: 10px;
   font-size: 18px;
   background-color: #19A7CE;
@@ -50,7 +48,7 @@ body {
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0 auto;
   max-width: 600px;
   width: calc(100% - 20px);
