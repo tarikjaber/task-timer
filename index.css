@@ -25,7 +25,6 @@ body {
   display: block;
   padding: 10px;
   font-size: 18px;
-  background-color: #57C5B6;
   color: white;
   border: none;
   border-radius: 5px;
@@ -41,9 +40,28 @@ body {
   border-radius: 5px;
 }
 
-#start-button:hover {
+button:hover {
   cursor: pointer;
+}
+
+.play {
   background-color: #57C5B6;
+}
+
+.play:hover {
+  background-color: #3eb3a3;
+}
+
+.pause {
+  background-color: #EA5455;
+}
+
+.pause:hover {
+  background-color: #e52a2b;
+}
+
+#skip-button:hover {
+  background-color: #158eaf;
 }
 
 .buttons {
@@ -60,4 +78,5 @@ button {
 
 button:active {
   transform: scale(0.95);
+  transition: 0.1s ease-in-out;
 }

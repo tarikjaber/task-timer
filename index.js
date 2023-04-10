@@ -43,14 +43,16 @@ function startTimer() {
     }
     if (startButton.textContent === 'Play') {
         startButton.textContent = 'Pause';
-        startButton.style.backgroundColor = "#FE6244";
+        startButton.classList.remove("play");
+        startButton.classList.add("pause");
         if (currentTaskIndex >= tasks.length) {
             currentTaskIndex = 0;
         }
         startNextTask();
     } else {
         startButton.textContent = 'Play';
-        startButton.style.backgroundColor = "#57C5B6";
+        startButton.classList.remove("pause");
+        startButton.classList.add("play");
         clearInterval(timerId);
     }
 }
@@ -105,8 +107,8 @@ function handleKeyPress(event) {
         remainingTime = 0; // reset remaining time for the current task
         clearInterval(timerId);
         currentTaskIndex = 0;
-        startButton.textContent = "Play";
-        startButton.style.backgroundColor = "#57C5B6";
+        startButton.classList.remove("pause");
+        startButton.classList.add("play");
         tasks = [];
     }
 }
@@ -126,8 +128,8 @@ skipButton.addEventListener("click", () => {
         new Notification("All tasks completed!")
         taskInput.value = "";
         remainingTime = 0;
-        startButton.textContent = "Play";
-        startButton.style.backgroundColor = "#57C5B6";
+        startButton.classList.remove("play");
+        startButton.classList.add("pause");
         title.textContent = "Task Timer";
         document.title = "Task Timer";
     }
