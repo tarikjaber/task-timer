@@ -71,8 +71,8 @@ function startNextTask() {
         remainingTime = timeLeft; // store remaining time for the current task
         const minutesLeft = Math.floor(timeLeft / 60);
         const secondsLeft = timeLeft % 60;
-        title.textContent = `${task.name} - ${minutesLeft}:${secondsLeft.toString().padStart(2, "0")}`;
-        document.title = `${task.name} - ${minutesLeft}:${secondsLeft.toString().padStart(2, "0")}`;
+        title.textContent = `${minutesLeft}:${secondsLeft.toString().padStart(2, "0")} - ${task.name}`;
+        document.title = `${minutesLeft}:${secondsLeft.toString().padStart(2, "0")} - ${task.name}`;
         if (timeLeft === 0) {
             clearInterval(timerId);
             currentTaskIndex++;
@@ -95,6 +95,7 @@ function startNextTask() {
     startInterval();
     timerId = setInterval(startInterval, 1000);
 }
+
 
 function handleKeyPress(event) {
     if (event.shiftKey && event.key === "Enter") {
