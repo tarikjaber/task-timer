@@ -118,6 +118,9 @@ startButton.addEventListener("click", startTimer);
 skipButton.addEventListener("click", () => {
     if (currentTaskIndex < tasks.length - 1) {
         clearInterval(timerId);
+        startButton.classList.remove("play");
+        startButton.classList.add("pause");
+        startButton.textContent = "Pause";
         currentTaskIndex++;
         remainingTime = 0; // reset remaining time for the current task
         startNextTask();
@@ -126,10 +129,11 @@ skipButton.addEventListener("click", () => {
         currentTaskIndex = 0;
         tasks = [];
         new Notification("All tasks completed!")
+        startButton.textContent = "Play";
+        startButton.classList.remove("pause");
+        startButton.classList.add("play");
         taskInput.value = "";
         remainingTime = 0;
-        startButton.classList.remove("play");
-        startButton.classList.add("pause");
         title.textContent = "Task Timer";
         document.title = "Task Timer";
     }
