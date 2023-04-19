@@ -100,6 +100,10 @@ function startNextTask() {
 
 
 function handleKeyPress(event) {
+    if (event.altKey) {
+        return;
+    }
+    
     if (event.shiftKey && event.key === "Enter") {
         event.preventDefault();
         startTimer();
