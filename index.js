@@ -1,6 +1,7 @@
 const taskInput = document.getElementById("task-input");
 const startButton = document.getElementById("start-button");
 const skipButton = document.getElementById("skip-button");
+const timeText = document.getElementById("time");
 const title = document.getElementById("title");
 
 taskInput.focus();
@@ -69,12 +70,12 @@ function startNextTask() {
         var timeLeft = task.time * 60;
     }
     const startInterval = () => {
-        console.log("start")
         remainingTime = timeLeft; // store remaining time for the current task
         const minutesLeft = Math.floor(timeLeft / 60);
         const secondsLeft = timeLeft % 60;
-        title.textContent = `${minutesLeft}:${secondsLeft.toString().padStart(2, "0")} - ${task.name}`;
-        document.title = `${minutesLeft}:${secondsLeft.toString().padStart(2, "0")} - ${task.name}`;
+        timeText.textContent = `${minutesLeft.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
+        title.textContent = task.name;
+        document.title = `${minutesLeft.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")} - ${task.name}`;
         if (timeLeft === 0) {
             clearInterval(timerId);
             currentTaskIndex++;
@@ -103,12 +104,11 @@ function handleKeyPress(event) {
     if (event.altKey) {
         return;
     }
-    
+
     if (event.shiftKey && event.key === "Enter") {
         event.preventDefault();
         startTimer();
     } else if (!event.shiftKey) {
-        remainingTime = 0; // reset remaining time for the current task
         clearInterval(timerId);
         currentTaskIndex = 0;
         startButton.classList.remove("pause");

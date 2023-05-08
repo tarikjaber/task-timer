@@ -88,3 +88,15 @@ button:active {
   transform: scale(0.95);
   transition: 0.2s ease-in-out;
 }
+
+#time {
+  font-size: 150px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+#title {
+  margin-top: -5px;
+  font-size: 50px;
+}
