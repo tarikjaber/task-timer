@@ -138,6 +138,7 @@ skipButton.addEventListener("click", () => {
         startButton.classList.add("play");
         taskInput.value = "";
         remainingTime = 0;
+        timeText.textContent = "00:00";
         title.textContent = "Task Timer";
         document.title = "Task Timer";
     }
