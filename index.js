@@ -81,7 +81,7 @@ function startNextTask() {
             currentTaskIndex++;
             audio.play();
             if (currentTaskIndex < tasks.length) {
-                new Notification(`${task.name} completed, ${tasks[currentTaskIndex]?.name} started for ${task.time} minute ${task.time > 1 ? "s" : ""}`);
+                new Notification(`${task.name} completed, ${tasks[currentTaskIndex]?.name} started for ${task.time} minute${task.time > 1 ? "s" : ""}`);
                 startNextTask();
             } else {
                 new Notification("All tasks completed!")
