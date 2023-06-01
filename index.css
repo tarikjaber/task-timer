@@ -11,7 +11,7 @@ body {
 #task-input {
   margin: 0 auto;
   display: block;
-  max-width: 600px;
+  max-width: 800px;
   width: calc(100% - 20px);
   resize: vertical;
   height: 250px;
