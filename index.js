@@ -17,6 +17,7 @@ taskInput.value = localStorage.getItem("taskInput") || "";
 function startTimer() {
     clearInterval(timerId);
     if (tasks.length === 0) {
+        formatInput();
         const tasksArray = taskInput.value.trim().split('\n').map(task => task.trim()).filter(task => task !== "");
         for (let task of tasksArray) {
             let lastSpaceIndex = task.lastIndexOf(" ");
@@ -119,6 +120,21 @@ function handleKeyPress(event) {
     }
 }
 
+function formatInput() {
+    newLines = []
+    taskInput.value.trim().split('\n').map(task => task.trim()).filter(task => task !== "").forEach(task => {
+        line = task.trim().replace(/^- \[\s\] /, '').replace(/^- \[\s[xX]\] /, '').replace(/^- /, '')
+
+        if (line.split(' ').length === 1 || isNaN(line.split(' ')[line.split(' ').length - 1])) {
+            line += " 10"
+        }
+
+        newLines.push(line)
+    });
+    taskInput.value = newLines.join('\n');
+}
+
+// Event Listeners
 taskInput.addEventListener("keydown", handleKeyPress);
 startButton.addEventListener("click", startTimer);
 skipButton.addEventListener("click", () => {
