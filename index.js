@@ -11,6 +11,9 @@ let timerId;
 let audio = new Audio('ding.mp3');
 let remainingTime = 0; // new variable to store remaining time for the current task
 
+// Load task input from localStorage
+taskInput.value = localStorage.getItem("taskInput") || "";
+
 function startTimer() {
     clearInterval(timerId);
     if (tasks.length === 0) {
@@ -99,7 +102,6 @@ function startNextTask() {
     timerId = setInterval(startInterval, 1000);
 }
 
-
 function handleKeyPress(event) {
     if (event.altKey) {
         return;
@@ -142,4 +144,9 @@ skipButton.addEventListener("click", () => {
         title.textContent = "Task Timer";
         document.title = "Task Timer";
     }
+});
+
+// Save task input to localStorage when the input changes
+taskInput.addEventListener("input", () => {
+    localStorage.setItem("taskInput", taskInput.value);
 });
