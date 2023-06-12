@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  padding: 0 30px 30px;
+  padding: 0 10px 30px;
   margin: 0;
   background-color: #BFEFFF;
 }
@@ -10,24 +10,28 @@ body {
 }
 
 textarea {
-  margin: 0 auto;
-  display: block;
-  max-width: 800px;
-  width: calc(100% - 20px);
   resize: vertical;
   height: 250px;
   padding: 10px;
+  overflow-wrap: break-word;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 18px;
+  flex: 1;
+  margin: 0 10px 10px;
+}
+
+.textarea-container {
+  margin: 20px auto;
+  max-width: 1400px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex; /* Add this line */
+  justify-content: space-between; /* Add this line */
 }
 
 #task-input, #notes-input {
   background-color: #B0E0E6;
-}
-
-#notes-input {
-  margin-top: 20px;
 }
 
 #start-button {
@@ -75,14 +79,15 @@ button:hover {
 
 .buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 0 auto;
   max-width: 600px;
   width: calc(100% - 20px);
 }
 
 button {
-  width: 100px;
+  width: 150px;
+  margin: 0 10px;
 }
 
 button:hover {
@@ -107,6 +112,7 @@ button:active {
 }
 
 #title {
-  margin-top: -5px;
+  margin-top: -20px;
   font-size: 50px;
+  margin-bottom: 10px;
 }

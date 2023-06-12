@@ -16,13 +16,14 @@
 <body>
   <p id="time">00:00</p>
   <h1 id="title">Task Timer</h1>
-  <textarea id="task-input" placeholder="Enter task and time in minutes on a line for every task like &quot;Task Name 10&quot; for 10 minutes."></textarea>
+  <div class="textarea-container">
+    <textarea id="task-input" placeholder="Enter task and time in minutes on a line for every task like &quot;Task Name 10&quot; for 10 minutes."></textarea>
+    <textarea id="notes-input" placeholder="Enter notes..."></textarea>
+  </div>
   <div class="buttons">
     <button id="start-button" class="play">Play</button>
     <button id="skip-button">Skip</button>
   </div>
-  <textarea id="notes-input"
-    placeholder="Enter notes..."></textarea>
   <script src="index.js"></script>
 </body>
 
