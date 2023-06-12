@@ -2,6 +2,7 @@ body {
   font-family: 'Roboto', sans-serif;
   padding: 0 30px 30px;
   margin: 0;
+  background-color: #BFEFFF;
 }
 
 #title {
@@ -19,6 +20,10 @@ textarea {
   border-radius: 5px;
   margin-bottom: 20px;
   font-size: 18px;
+}
+
+#task-input, #notes-input {
+  background-color: #B0E0E6;
 }
 
 #notes-input {
