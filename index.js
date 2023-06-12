@@ -172,3 +172,10 @@ taskInput.addEventListener("input", () => {
 notesInput.addEventListener("input", () => {
     localStorage.setItem("notesInput", notesInput.value);
 });
+
+notesInput.addEventListener("mouseup", () => {
+    const selectedText = window.getSelection().toString();
+    if (selectedText.trim() !== "") {
+        taskInput.value = selectedText;
+    }
+});
