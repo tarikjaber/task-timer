@@ -2,7 +2,8 @@ body {
   font-family: 'Roboto', sans-serif;
   padding: 0 10px 30px;
   margin: 0;
-  background-color: #BFEFFF;
+  background-color: #333333;
+  color: #f5f5f5;
 }
 
 #title {
@@ -10,7 +11,7 @@ body {
 }
 
 textarea {
-  resize: vertical;
+  resize: none;
   height: 250px;
   padding: 10px;
   overflow-wrap: break-word;
@@ -18,7 +19,15 @@ textarea {
   margin-bottom: 10px;
   font-size: 18px;
   flex: 1;
+  border-color: #333333;
+  color: #f5f5f5;
   margin: 0 10px 10px;
+  border-color: #545454;
+  border-width: 2px;
+}
+
+textarea:focus {
+  outline: none;
 }
 
 .textarea-container {
@@ -31,26 +40,7 @@ textarea {
 }
 
 #task-input, #notes-input {
-  background-color: #B0E0E6;
-}
-
-#start-button {
-  display: block;
-  padding: 10px;
-  font-size: 18px;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-#skip-button {
-  display: block;
-  padding: 10px;
-  font-size: 18px;
-  background-color: #19A7CE;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  background-color: #333333;
 }
 
 button:hover {
@@ -58,23 +48,27 @@ button:hover {
 }
 
 .play {
-  background-color: #57C5B6;
+  background-color:  #355E3B;
 }
 
 .play:hover {
-  background-color: #3eb3a3;
+  background-color: #2a4b2f;
 }
 
 .pause {
-  background-color: #EA5455;
+  background-color: #8a3232;
 }
 
 .pause:hover {
-  background-color: #e52a2b;
+  background-color: #871919;
+}
+
+#skip-button {
+  background-color: #0f637a;
 }
 
 #skip-button:hover {
-  background-color: #158eaf;
+  background-color: #0c5467;
 }
 
 .buttons {
@@ -88,6 +82,12 @@ button:hover {
 button {
   width: 150px;
   margin: 0 10px;
+  display: block;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  color: #f5f5f5;
 }
 
 button:hover {

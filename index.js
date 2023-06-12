@@ -177,7 +177,13 @@ document.addEventListener("mouseup", () => {
     const selectedText = window.getSelection().toString();
     console.log(selectedText);
     if (selectedText.trim() !== "") {
-        taskInput.value = selectedText;
-        localStorage.setItem("taskInput", taskInput.value);
+        const confirmed = confirm(`Add "${selectedText}" to the task list?`);
+        if (confirmed) {
+            clearInterval(timerId);
+            currentTaskIndex = 0;
+            tasks = [];
+            taskInput.value = selectedText;
+            localStorage.setItem("taskInput", taskInput.value);
+        }
     }
 });
