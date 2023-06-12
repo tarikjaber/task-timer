@@ -1,4 +1,5 @@
 const taskInput = document.getElementById("task-input");
+const notesInput = document.getElementById("notes-input");
 const startButton = document.getElementById("start-button");
 const skipButton = document.getElementById("skip-button");
 const timeText = document.getElementById("time");
@@ -13,6 +14,7 @@ let remainingTime = 0; // new variable to store remaining time for the current t
 
 // Load task input from localStorage
 taskInput.value = localStorage.getItem("taskInput") || "";
+notesInput.value = localStorage.getItem("notesInput") || "";
 
 function startTimer() {
     clearInterval(timerId);
@@ -165,4 +167,8 @@ skipButton.addEventListener("click", () => {
 // Save task input to localStorage when the input changes
 taskInput.addEventListener("input", () => {
     localStorage.setItem("taskInput", taskInput.value);
+});
+
+notesInput.addEventListener("input", () => {
+    localStorage.setItem("notesInput", notesInput.value);
 });

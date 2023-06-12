@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  padding: 30px;
+  padding: 0 30px 30px;
   margin: 0;
 }
 
@@ -8,7 +8,7 @@ body {
   text-align: center;
 }
 
-#task-input {
+textarea {
   margin: 0 auto;
   display: block;
   max-width: 800px;
@@ -19,6 +19,10 @@ body {
   border-radius: 5px;
   margin-bottom: 20px;
   font-size: 18px;
+}
+
+#notes-input {
+  margin-top: 20px;
 }
 
 #start-button {
@@ -94,6 +98,7 @@ button:active {
   font-weight: bold;
   margin: 0;
   text-align: center;
+  margin-top: 0px;
 }
 
 #title {
