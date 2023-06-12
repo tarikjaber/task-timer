@@ -17,6 +17,7 @@ taskInput.value = localStorage.getItem("taskInput") || "";
 notesInput.value = localStorage.getItem("notesInput") || "";
 
 function startTimer() {
+    console.log("start timer");
     clearInterval(timerId);
     if (tasks.length === 0) {
         formatInput();
@@ -92,8 +93,10 @@ function startNextTask() {
             } else {
                 new Notification("All tasks completed!")
                 startButton.textContent = "Play";
-                startButton.style.backgroundColor = "#57C5B6";
+                startButton.classList.remove("pause");
+                startButton.classList.add("play");
                 tasks = [];
+                timerId = null;
                 taskInput.value = "";
                 title.textContent = "Task Timer";
                 document.title = "Task Timer";
@@ -173,17 +176,30 @@ notesInput.addEventListener("input", () => {
     localStorage.setItem("notesInput", notesInput.value);
 });
 
-document.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", (event) => {
+  if (event.target === notesInput) {
     const selectedText = window.getSelection().toString();
     console.log(selectedText);
+
     if (selectedText.trim() !== "") {
-        const confirmed = confirm(`Add "${selectedText}" to the task list?`);
-        if (confirmed) {
-            clearInterval(timerId);
-            currentTaskIndex = 0;
-            tasks = [];
-            taskInput.value = selectedText;
-            localStorage.setItem("taskInput", taskInput.value);
-        }
+      let confirmed = true;
+      console.log(timerId);
+
+      if (timerId) {
+        confirmed = confirm(`Add "${selectedText}" to the task list and start the timer?`);
+        console.log(confirmed);
+      }
+
+      if (confirmed) {
+        console.log("hi");
+        clearInterval(timerId);
+        currentTaskIndex = 0;
+        remainingTime = 0;
+        tasks = [];
+        taskInput.value = selectedText;
+        localStorage.setItem("taskInput", notesInput.value);
+      }
     }
+  }
 });
+
